@@ -157,3 +157,77 @@ window.addEventListener('keydown', function(e){
 });
 
 // 08 - Functions
+
+// trabalhar com functions no typescript é basicamente como trabalhar no JavaScript também
+// apenas com um adendo a tipagem explicita e implicita ex:
+
+function sum(num1: number, num2: number){ //se estiver aparecendo 'void' na função significa que a mesma
+        console.log(num1 + num2);         // não espera um retorno
+    return num1 + num2;
+}
+
+sum(45, 54);
+
+// 09 - Overload function
+
+// let person: (x: string, p: number) =>number:  /* overload ou molde */ 
+
+// person = (name: string, age: number) => {
+// return age; 
+// };
+
+// console.log(person('Alexandre, 49));
+
+// 10 - Tipo Any
+// Se ao declararmos uma variavel adicionarmos o tipo any ao inves de 'string' 'number' ou 'boolean por ex
+// ela irá aceitar qualquer dos tipos
+// let myName: any;
+
+// 11 - Parâmetros e propriedades opcionais
+
+// Quando criamos a estrutura de um objeto ao implementa-lo devemos colocar todas as propriedades do mesmo
+// caso contrario retornará erro 
+// porém podemos colocar algumas propriedades como opcionais da seguinte forma:
+// isAdmin?:  (ou seja utilizan o sinal '?')
+// o mesmo é valido para os parametros de uma function 
+// porém ao colocar um parametro como opcional em uma função sempre coloque o por ultimo
+
+// 12 - Type alias
+
+//Exemplo
+
+type NumberOrString = number | string;
+
+function dadosPessoais(name: string, age: NumberOrString, address: { street: string; number: NumberOrString}) {
+    console.log(name, age, address);
+}
+
+dadosPessoais('Andre', '27', {street: 'my-street', number: 231});
+
+// 13 - Interfaces
+
+// Ao invés de ficar declarando as mesmas propriedades para objetos que possuiram a mesma estrutura
+// podemos declarar: let user1: userInterface;
+// funcionando de forma parecida com o type
+// lembrando que o aconselhavél é utilizar o type só para tipos
+// e o interfaces para objetos
+
+// Exemplo
+
+interface userInterface {
+    name: string;
+    age: number;
+    color: string;
+}
+
+let user: userInterface
+
+//14 - Webpack com typescript
+
+//https://webpack.js.org/guides/typescript/
+
+//npm install webpack webpack-cli --save-dev
+
+// npm install --save-dev typescript ts-loader
+
+//após a instalação é necessário criar o arquivo webpack.config.js sempre na raiz do projeto 
