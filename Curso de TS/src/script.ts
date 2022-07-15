@@ -1,5 +1,8 @@
 // Curso de TypeScript
 
+import { info } from "console";
+import { getSystemErrorName } from "util";
+
 //01 - Compilando arquivo .ts em .js
 
 // para compilar o arquivo .ts devemos realizar o download instalação e config
@@ -226,8 +229,142 @@ let user: userInterface
 
 //https://webpack.js.org/guides/typescript/
 
-//npm install webpack webpack-cli --save-dev
+//1- npm install webpack webpack-cli --save-dev
 
-// npm install --save-dev typescript ts-loader
+//2- npm install --save-dev typescript ts-loader
 
-//após a instalação é necessário criar o arquivo webpack.config.js sempre na raiz do projeto 
+//3- criar o arquivo webpack.config.js sempre na raiz do projeto e inserir o codigo do site official
+//configurar o webpack.config.js
+//verificar se posssui o arquivo index.js no local indicado
+//se nao ocorrer erro irá criar package.json e package-lock.json
+// no package.json em "scripts" add "dev":"NODE_ENV=DEVELOPMENT webpack --progress --watch"
+//4- npm run dev
+//erro ao executar o comando npm run dev // realizado reparo na instalação do node // nao gerou o bundle.js
+//adicionar em module.exports: mode:process.env.NODE_ENV. (codigo não é compilado em uma linha só seguindo estruturado)
+
+// Com o webpack voce consegue compilar o codigo em diversas partes 
+
+   /* 15 - O básico sobre Classes */
+
+// exemplo:
+
+// crie um arquivo Person.ts
+// export class Person {
+//    
+//
+//name: string;
+//age: number | string;
+
+//constructor(name: string, age: number | string) {
+//this.name = name;
+//this.age = age;
+//}}
+
+// em seguida no arquivo index.ts coloque:
+
+//import {Person} from '.classes/Person'
+//const person = new Person('Andre', '27');
+//console.log(person);
+
+/* 16 - Modificadores de acesso */ 
+
+// Quano queremos que a propriedade de uma classe não possa ser altera podemos add o protected
+// exemplo:
+// protected myName:string = 'Andre';
+// o private funciona de forma parecida, porém o protected é acessivel dentro da propria classe e subclasse
+// ja o private é visto somente dentro da propria classe.
+// ou ao nao declarar nada a classe fica publica 
+// o readonly significa que a classe se torna apenas leitura não sendo possivel alterar.
+
+                    // npm install fork-ts-checker-webpack-plugin -D
+//plugin pra debugar       // colocar dentro arquivo ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+                    // plugins: [new ForkTsCheckerWebpackPlugin()]
+// é até possivel burlar o readonly,protected e private com uma constructor, vai apresentar erro no editor porém vai compilar
+// porém com o plugin do webpack é possivel nao deixar compilar.
+
+     /* 17 - Setters e Getters */ 
+
+     // (Person.ts)
+//export class Person {
+//    private myName:string = 'Andre Gabriel';
+//
+//    setMyName(myName:string){
+//        this.myName = myName;
+//    }
+//
+//    getSystemErrorName(){
+//        return this.myName;
+//    }
+//    info():string{
+//        return `Meu nome é ${this.myName}`;//
+//    }
+//}
+
+// (index.ts)
+
+//import { Person } from './classes/Person';
+
+//const p = new Person();
+//p.setMyName('Joao');
+//console.log(p.info())           // vai exibir Meu nome é Joao
+
+////console.log(p.getMyName())    // vai exibir só a propriedade (Joao)
+
+     /* 18 - Atributos e Métodos estáticos */
+
+// exemplo de como acessar um atributo ou metodo estático
+
+//(person.ts)
+//export class Person {
+//    static myName:string = 'Andre'
+//}
+
+//index.ts
+
+//import { Person } from ' .;classes/Person';
+
+//console.log(Person.myName);  // se fosse um metodo seria console.log(Person.myName())
+
+// com a propriedade metodo estatico é possivel chamar diretamente pela classe
+
+     /* 19 - Possibilidade de não iniciar as propriedades */ 
+
+// No typescript voce tem que atrivuir um valor para a propriedade ao criar
+// ou voce tem que que atribuir valor no metodo constructor
+
+//porém no tsconfig.json é posivel compilar sem valor alterado o "strict"
+// porém isso não é indicado, pois isso pode ocasionar problemas maiores no codigo
+
+      /* 20 - Generics */ 
+
+interface UserInterface<T> {
+    name:string;
+    age:number;
+    data: T;
+}
+
+const personZ: UserInterface<string> = { 
+    name: 'Alexandre',
+    age: 39,
+    data: 'Alexandre',
+};
+
+console.log(personZ);
+
+     /* Exemplo com Função */ 
+
+function personW<T extends number|string = string>(data: string) {
+    return data;
+}
+
+const p = personW('Alexandre');
+console.log(p);
+
+     /* 21 - Generics em classes */ 
+
+// Funciona de maneira bem parecida com função e objetos 
+
+
+    /* 22 - Pegando elementos do DOM */
+
+//
