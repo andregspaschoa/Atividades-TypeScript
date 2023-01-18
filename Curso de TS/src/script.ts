@@ -39,6 +39,7 @@ let person = {
 
 person.isAdmin = false;
 
+
 console.log(person);
 
 //04 - Tipagem explícita com tipos primitivos
@@ -84,7 +85,7 @@ names.push('Joao', 39);
 //    age: 43,
 //};
 
-// person []; // ao declar um objeto dessa forma é possivel posteriormente declarar um array dento
+// person []; // ao declarar um objeto dessa forma é possivel posteriormente declarar um array dentro
 // porém ao declarar da forma abaixo já retornará um erro.
 
 let person3 : {
@@ -111,8 +112,8 @@ data = [
 
 // e oberve que ao declarar da seguinte forma: let data: [number, string][] = [39, 'Alex']
 // podemos utilizar o data.push(59,'Jose'); para adicionar propriedades a esse array
-// outra obs é que ao trabalhar dessa forma com o .push é possivel declar somente o number
-// ou string e também declarar alterando a ordem. ex: data.psh(95);
+// outra obs é que ao trabalhar dessa forma com o .push é possivel declarar somente o number
+// ou string e também declarar alterando a ordem. ex: data.push(95);
 //obs se tentar adicionar um valor boolean que nao foi declarado retornará erro
 // ao dar um console.log verá que dessa forma cada propriedade fica separada em um indice
 
@@ -191,7 +192,7 @@ sum(45, 54);
 // Quando criamos a estrutura de um objeto ao implementa-lo devemos colocar todas as propriedades do mesmo
 // caso contrario retornará erro 
 // porém podemos colocar algumas propriedades como opcionais da seguinte forma:
-// isAdmin?:  (ou seja utilizan o sinal '?')
+// isAdmin?:  (ou seja utilizam o sinal '?')
 // o mesmo é valido para os parametros de uma function 
 // porém ao colocar um parametro como opcional em uma função sempre coloque o por ultimo
 
@@ -268,7 +269,7 @@ let user: userInterface
 
 /* 16 - Modificadores de acesso */ 
 
-// Quano queremos que a propriedade de uma classe não possa ser altera podemos add o protected
+// Quando queremos que a propriedade de uma classe não possa ser alterada podemos add o protected
 // exemplo:
 // protected myName:string = 'Andre';
 // o private funciona de forma parecida, porém o protected é acessivel dentro da propria classe e subclasse
@@ -329,7 +330,7 @@ let user: userInterface
 
      /* 19 - Possibilidade de não iniciar as propriedades */ 
 
-// No typescript voce tem que atrivuir um valor para a propriedade ao criar
+// No typescript voce tem que atribuir um valor para a propriedade ao criar
 // ou voce tem que que atribuir valor no metodo constructor
 
 //porém no tsconfig.json é posivel compilar sem valor alterado o "strict"
